@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter,Route,Link, Routes } from 'react-router-dom';
+import Menu from './Pages/Menu';
+import Contact from './Pages/Contact';
+import About from './Pages/About';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const Navigation=()=>{
+    return (
+    <div className='container'>
+        <p><b>PIZZA HUT</b></p>
+        <hr></hr>
+    <nav>
+        <ul className='navi'>
+            <li className='li2'><Link to='/menu'>MENU</Link></li>
+            <li className='li2'><Link to='/contact'>CONTACT</Link></li>
+            <li className='li2'><Link to='/about'>ABOUT</Link></li>
+        </ul>
+    </nav>
     </div>
+    );
+};
+const App=()=>{
+  return(
+  <>
+    <BrowserRouter>
+      <div>
+        <Navigation/>
+        <Routes>
+            <Route path='/menu' element={<Menu/>} />
+            <Route path='/contact' element={<Contact/>} />
+            <Route path='/about' element={<About/>} />
+
+        </Routes>
+
+      </div>
+    </BrowserRouter>
+    </>
   );
 }
-
 export default App;
